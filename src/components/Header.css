@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    /* Utilizando flexbox */
+    flex-wrap: wrap;
+    /* Envuelve los elementos en filas adicionales */
+    border-radius: 20px;
+    
+}
+
+.img{
+    width: 25%;
+}
