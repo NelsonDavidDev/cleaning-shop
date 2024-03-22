@@ -2,7 +2,7 @@ import './Header.css'
 
 function Header() {
   return <div className="header"> 
-    <img className='img' src='https://i.imgur.com/ItHcq7o.jpeg'/>
+    <h1>Escobas y traperos la Unica</h1>
   </div>;
 }
 

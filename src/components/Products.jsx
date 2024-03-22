@@ -22,7 +22,7 @@ function redireccionarURL(url) {
   <>
    <div className="products-container"> {/* Contenedor de los productos */}
       {Products.map((product, index) => (
-        <div key={index} className="product-item" onClick={() => redireccionarURL(product.images[0])}> {/* Estilo para cada producto */}
+        <div key={index} className="product-item" onClick={() => redireccionarURL(cleanImageUrl(product.images[0]))}> {/* Estilo para cada producto */}
           <img className="product-img" src={cleanImageUrl(product.images[0])} alt={product.title} />
           <p className='product-price'>${product.price}</p>
           <h3 className='product-title'>{product.title}</h3>
