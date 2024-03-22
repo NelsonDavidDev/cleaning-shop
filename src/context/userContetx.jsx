@@ -7,7 +7,7 @@ export function UserContextProvider(props) {
   const [login, setLogin] = useState(false);
   return (
       <UserContext.Provider value={{login, setLogin}}>
-        {console.log(props.children)}
+        {props.children}
       </UserContext.Provider>
   )
 }
