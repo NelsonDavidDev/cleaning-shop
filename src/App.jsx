@@ -1,7 +1,14 @@
-import Home from './screens/home'
+import HomePage from './screens/HomePage'
+import ProductPage  from "./screens/ProductPage"
+import { Route } from "wouter";
 function App() {
   return (
-    <Home />
+    <>
+    <Route path='/' component={HomePage}/>
+    <Route path='/product/:id'>
+      {params => <ProductPage id={params.id} />}
+    </Route>
+    </>
   )
 }
 
