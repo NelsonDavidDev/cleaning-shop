@@ -27,6 +27,7 @@ function ProductPage({id}) {
       {product && product.images && (
             <Product product={product}/>
       )}
+      <h2 className="text-2xl mb-5 mt-10 ml-36 text-white font-bold">Productos similares</h2>
         <Products/>
     </>
   );
