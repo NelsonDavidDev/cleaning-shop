@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import { UserContext } from "../context/userContetx";
 import {Link} from "wouter"
 
 function NavBar({setLogInModal, setRegisterModal}) {
-  
-  const context = useContext(UserContext);
 
   return (
     <>
@@ -29,19 +25,7 @@ function NavBar({setLogInModal, setRegisterModal}) {
               (+57) 000 000 00 00
             </Link>
 
-            {context.login ? (
-              <>
-                <Link href={ '/' } className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
-                  Profile
-                </Link>
-                <button
-                  onClick={() => context.setLogin(false)}
-                  className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  LogOut
-                </button>
-              </>
-            ) : (
+            {/* {!context.login ? ( */}
               <>
                 <button onClick={()=> setRegisterModal(true)} className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
                   Register
@@ -53,7 +37,19 @@ function NavBar({setLogInModal, setRegisterModal}) {
                   LogIn
                 </button>
               </>
-            )}
+             {/*) : (
+              <>
+                <button className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
+                  Register
+                </button>
+                <button
+                  
+                  className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  LogIn
+                </button>
+              </>
+            )} */}
           </div>
         </div>
       </nav>
