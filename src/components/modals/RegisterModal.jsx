@@ -25,7 +25,7 @@ function RegisterModal({setRegisterModal, setLogInModal}) {
     setRegisterModal(false)
    
   }).catch((error) => {
-    console.log(error)
+    alert("error" + error)
   });
   }
 

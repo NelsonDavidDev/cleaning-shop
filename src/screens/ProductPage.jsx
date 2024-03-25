@@ -1,22 +1,31 @@
 import { useEffect, useState } from "react";
 import Product from "../components/Product"
 import Products from "../components/Products";
+import { get, ref } from "firebase/database";
+import { database } from "./../firebase/config";
 
 function ProductPage({id}) {
 
   const [product, setProduct] = useState([]);
 
 
+
+
   useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await fetch('https://api.escuelajs.co/api/v1/products/' + id);
-      const data = await response.json();
-      setProduct(data);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    const obtenerDatoDeFirebase = async () => {
+      try {
+        const snapshot = await get(ref(database, 'products/' + id)); // Ruta de tu dato en la base de datos
+        if (snapshot.exists()) {
+          const datoFirebase = snapshot.val();
+          setProduct(datoFirebase);
+        } else {
+          alert('No se encontró el dato');
+        }
+      } catch (error) {
+        alert('Error al obtener el dato :' + error);
+      }
     };
-    
-    fetchProduct();
-    
+    obtenerDatoDeFirebase();
   }, [id]);
   
   

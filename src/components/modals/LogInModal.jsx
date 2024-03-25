@@ -25,18 +25,17 @@ function LogInModal({ setLogInModal, setRegisterModal }) {
     setLogInModal(false)
    
   }).catch((error) => {
-    console.log(error)
+    alert("error al iniciar sesión" + error)
   });
   }
 
   
   async function handleSubmit () {
     try {
-      const user = await signInWithEmailAndPassword(auth, dataLogin.email, dataLogin.password)
-      console.log(user)
+      await signInWithEmailAndPassword(auth, dataLogin.email, dataLogin.password)
       setLogInModal(false)
     } catch (error) {
-      console.log(error.message)
+      alert("Error" + error.message)
     }
   }
 

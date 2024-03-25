@@ -20,9 +20,8 @@ function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log('Sesión cerrada exitosamente');
     } catch (error) {
-      console.log('Error al cerrar sesión:', error.message);
+      alert('Error al cerrar sesión:', error.message);
     }
   };
 

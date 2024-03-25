@@ -5,6 +5,7 @@ import LogInModal from "./components/modals/LogInModal";
 import RegisterModal from "./components/modals/RegisterModal";
 import { Route } from "wouter";
 import { useState } from "react";
+import AdminPanel from "./screens/AdminPanel";
 
 function App() {
   const [loginModal, setLogInModal] = useState(false)
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
     <NavBar setLogInModal={setLogInModal} setRegisterModal={setRegisterModal} setUser={setUser} user={user}/>
+    <Route path='/adminpanel/' component={AdminPanel}/>
     <Route path='/' component={HomePage}/>
     <Route path='/product/:id'>
       {params => <ProductPage id={params.id} />}
