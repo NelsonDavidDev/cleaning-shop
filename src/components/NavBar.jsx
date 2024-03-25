@@ -1,6 +1,30 @@
 import {Link} from "wouter"
+import { auth } from "./../firebase/config";
+import { signOut, onAuthStateChanged  } from "firebase/auth";
 
-function NavBar({setLogInModal, setRegisterModal}) {
+function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
+
+  function currentUser() {
+    console.log(auth.currentUser)
+  }
+
+  onAuthStateChanged(auth,(currentUser) => {
+    if (currentUser) {
+      setUser(currentUser)
+    }else{
+      setUser(null)
+    }
+    
+  })
+  
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log('Sesión cerrada exitosamente');
+    } catch (error) {
+      console.log('Error al cerrar sesión:', error.message);
+    }
+  };
 
   return (
     <>
@@ -25,7 +49,7 @@ function NavBar({setLogInModal, setRegisterModal}) {
               (+57) 000 000 00 00
             </Link>
 
-            {/* {!context.login ? ( */}
+             {!user ? (
               <>
                 <button onClick={()=> setRegisterModal(true)} className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
                   Register
@@ -37,19 +61,19 @@ function NavBar({setLogInModal, setRegisterModal}) {
                   LogIn
                 </button>
               </>
-             {/*) : (
+             ) : (
               <>
                 <button className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
-                  Register
+                  Profile
                 </button>
                 <button
-                  
+                  onClick={()=> handleLogout()}
                   className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  LogIn
+                  LogOut
                 </button>
               </>
-            )} */}
+            )}
           </div>
         </div>
       </nav>
@@ -83,12 +107,12 @@ function NavBar({setLogInModal, setRegisterModal}) {
                 </Link>
               </li>
               <li>
-                <Link
-                  href={'/'}
+                <button
+                  onClick={() => currentUser()}
                   className="text-gray-900 dark:text-white hover:underline"
                 >
                   Free Shipping
-                </Link>
+                </button>
               </li>
             </ul>
           </div>

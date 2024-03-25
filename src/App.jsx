@@ -7,12 +7,12 @@ import { Route } from "wouter";
 import { useState } from "react";
 
 function App() {
-
   const [loginModal, setLogInModal] = useState(false)
   const [registerModal, setRegisterModal] = useState(false)
+  const [user, setUser] = useState(null)
   return (
     <>
-    <NavBar setLogInModal={setLogInModal} setRegisterModal={setRegisterModal}/>
+    <NavBar setLogInModal={setLogInModal} setRegisterModal={setRegisterModal} setUser={setUser} user={user}/>
     <Route path='/' component={HomePage}/>
     <Route path='/product/:id'>
       {params => <ProductPage id={params.id} />}
