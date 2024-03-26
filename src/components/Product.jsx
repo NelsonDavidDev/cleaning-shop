@@ -28,7 +28,7 @@ function Product({ product }) {
   return (
     <div className="grid grid-cols-2 dark:bg-gray-800 p-5 rounded-xl m-64 mt-5 mb-5 h-min">
       <div className="h-5/6">
-        <img className="w-auto rounded-xl mt-5" src={currentImage} />
+        <img className="w-96 rounded-xl mt-5" src={currentImage} />
         <div className="grid grid-cols-7 gap-1 mt-1 col-span-1 dark:bg-gray-700 rounded-xl">
         {currentProduct.images.map((image, index) => (
           <img
