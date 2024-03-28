@@ -1,0 +1,16 @@
+{
+    "header": {
+        "business-name": "Business name",
+        "business-number": "000-000-00-00",
+        "description": "Business description"
+    },
+    "product": {
+        "name": "Name",
+        "description": "Description",
+        "price": "Price",
+        "quantity": "Quantity",
+        "add-to-cart": "Add-to-cart",
+        "buy-now": "Buy-now",
+        "add-to-favorite-list": "Add to favorite"
+    }
+}

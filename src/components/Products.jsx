@@ -22,7 +22,7 @@ useEffect(() => {
   
 
   return (
-   <div className="grid grid-cols-5 gap-1 m-64 mt-0"> {/* Contenedor de los productos */}
+   <div className="grid grid-cols-s gap-1 m-64 mt-0"> {/* Contenedor de los productos */}
       {products.map((product, index) => (
         <Link href={ '/product/' + product.id } key={index} className="text-white hover:bg-neutral-800 hover:cursor-pointer p-3" > {/* Estilo para cada producto */}
           <img className="w-100" src={cleanImageUrl(product.images[0])} alt={product.title} />

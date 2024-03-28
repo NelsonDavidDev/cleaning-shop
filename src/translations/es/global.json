@@ -1,0 +1,16 @@
+{
+    "header": {
+        "business-name": "Nombre del negocio",
+        "business-number": "000-000-00-11",
+        "description": "Descripción del negocio"
+    },
+    "product": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "price": "Precio",
+        "quantity": "Cantidad",
+        "add-to-cart": "Añadir al carrito",
+        "buy-now": "Comprar ahora",
+        "add-to-favorite-list" : "Añadir a favoritos"
+    }
+}

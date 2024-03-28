@@ -1,27 +1,30 @@
-import {Link} from "wouter"
+import { Link } from "wouter";
 import { auth } from "./../firebase/config";
-import { signOut, onAuthStateChanged  } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
-function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
+function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
+  const [t, i18n] = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function currentUser() {
-    console.log(auth.currentUser)
+    console.log(auth.currentUser);
   }
 
-  onAuthStateChanged(auth,(currentUser) => {
+  onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
-      setUser(currentUser)
-    }else{
-      setUser(null)
+      setUser(currentUser);
+    } else {
+      setUser(null);
     }
-    
-  })
-  
+  });
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
     } catch (error) {
-      alert('Error al cerrar sesión:', error.message);
+      alert("Error al cerrar sesión:", error.message);
     }
   };
 
@@ -29,7 +32,8 @@ function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
     <>
       <nav className="border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <Link href={ '/' }
+          <Link
+            href={"/"}
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
@@ -42,15 +46,19 @@ function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
             </span>
           </Link>
           <div className="flex items-center space-x-6 rtl:space-x-reverse">
-          <Link href={ '/' }
+            <Link
+              href={"/"}
               className="text-sm  text-gray-500 dark:text-white hover:underline"
             >
-              (+57) 000 000 00 00
+              {t("header.business-number")}
             </Link>
 
-             {!user ? (
+            {!user ? (
               <>
-                <button onClick={()=> setRegisterModal(true)} className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
+                <button
+                  onClick={() => setRegisterModal(true)}
+                  className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
+                >
                   Register
                 </button>
                 <button
@@ -60,21 +68,40 @@ function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
                   LogIn
                 </button>
               </>
-             ) : (
+            ) : (
               <>
                 <button className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
                   Profile
                 </button>
                 <button
-                  onClick={()=> handleLogout()}
+                  onClick={() => handleLogout()}
                   className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   LogOut
                 </button>
               </>
             )}
+            
+              <div className="relative">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  onClick={() => setMenuOpen(!menuOpen)}
+                >
+                  Ln
+                </button>
+                {menuOpen && (
+                  <div className="absolute right-0 mt-2 bg-white rounded-lg shadow-lg">
+                    <button onClick={() => {i18n.changeLanguage("es"); setMenuOpen(false)}} className="block w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+                      Es
+                    </button>
+                    <button onClick={() => {i18n.changeLanguage("en"); setMenuOpen(false)}} className="block w-full text-left px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200">
+                      En
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
       </nav>
       <nav className="bg-gray-50 dark:bg-gray-700">
         <div className="max-w-screen-xl px-4 py-3 mx-auto">
@@ -91,7 +118,7 @@ function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
               </li>
               <li>
                 <Link
-                  href={'/'}
+                  href={"/"}
                   className="text-gray-900 dark:text-white hover:underline"
                 >
                   Categories
@@ -99,7 +126,7 @@ function NavBar({setLogInModal, setRegisterModal, setUser, user}) {
               </li>
               <li>
                 <Link
-                  href={'/'}
+                  href={"/"}
                   className="text-gray-900 dark:text-white hover:underline"
                 >
                   Promos
