@@ -30,7 +30,7 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
 
   return (
     <>
-      <nav className="border-gray-200 dark:bg-gray-900">
+      <nav className="dark:bg-gray-900">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <Link
             href={"/"}

@@ -5,7 +5,7 @@ import i18n from "i18next";
 import global_en from "./en/global";
 import global_es from "./es/global";
 
-i18n.use(initReactI18next).init({
+i18n.use(LenguageDetector).use(initReactI18next).init({
   interpolation: { escapeValue: false },
   debug: true,
   resources: {
@@ -13,7 +13,7 @@ i18n.use(initReactI18next).init({
       translation: global_es
     },
     en: {
-      translation: global_en
-    }
+      translation: global_en,
+    },
   },
 });
