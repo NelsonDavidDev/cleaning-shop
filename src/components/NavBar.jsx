@@ -42,7 +42,7 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
               alt="La Unica Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              La Unica
+              {t("header.business-name")}
             </span>
           </Link>
           <div className="flex items-center space-x-6 rtl:space-x-reverse">
@@ -59,25 +59,25 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
                   onClick={() => setRegisterModal(true)}
                   className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  Register
+                  {t("auth.create-account")}
                 </button>
                 <button
                   onClick={() => setLogInModal(true)}
                   className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  LogIn
+                  {t("auth.logIn")}
                 </button>
               </>
             ) : (
               <>
                 <button className="text-sm  text-blue-600 dark:text-blue-500 hover:underline">
-                  Profile
+                  {t("auth.profile")}
                 </button>
                 <button
                   onClick={() => handleLogout()}
                   className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  LogOut
+                  {t("auth.logOut")}
                 </button>
               </>
             )}
@@ -113,7 +113,7 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
                   className="text-gray-900 dark:text-white hover:underline"
                   aria-current="page"
                 >
-                  Home
+                  {t("nav.home")}
                 </Link>
               </li>
               <li>
@@ -121,7 +121,7 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
                   href={"/"}
                   className="text-gray-900 dark:text-white hover:underline"
                 >
-                  Categories
+                  {t("nav.categories")}
                 </Link>
               </li>
               <li>
@@ -129,7 +129,7 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
                   href={"/"}
                   className="text-gray-900 dark:text-white hover:underline"
                 >
-                  Promos
+                  {t("nav.promos")}
                 </Link>
               </li>
               <li>
@@ -137,7 +137,7 @@ function NavBar({ setLogInModal, setRegisterModal, setUser, user }) {
                   onClick={() => currentUser()}
                   className="text-gray-900 dark:text-white hover:underline"
                 >
-                  Free Shipping
+                  {t("nav.free-shipping")}
                 </button>
               </li>
             </ul>

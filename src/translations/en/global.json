@@ -4,6 +4,20 @@
         "business-number": "000-000-00-00",
         "description": "Business description"
     },
+    "auth": {
+        "logIn": "LogIn",
+        "logOut": "LogOut",
+        "create-account": "Create account",
+        "profile": "Profile",
+        "e-mail": "E-Mail",
+        "password": "Password"
+    },
+    "nav": {
+        "home": "Home",
+        "categories": "Categories",
+        "promos": "Promos",
+        "free-shipping": "Free Shipping"
+    },
     "product": {
         "name": "Name",
         "description": "Description",

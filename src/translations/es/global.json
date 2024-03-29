@@ -4,6 +4,20 @@
         "business-number": "000-000-00-11",
         "description": "Descripción del negocio"
     },
+    "auth": {
+        "logIn": "Iniciar sesión",
+        "logOut": "Cerrar sesión",
+        "create-account": "Crear cuenta",
+        "profile": "Perfil",
+        "e-mail": "E-Mail",
+        "password": "Contraseña"
+    },
+    "nav": {
+        "home": "Inicio",
+        "categories": "Categorias",
+        "promos": "Promociones",
+        "free-shipping": "Envio Gratis"
+    },
     "product": {
         "name": "Nombre",
         "description": "Descripción",
@@ -11,6 +25,6 @@
         "quantity": "Cantidad",
         "add-to-cart": "Añadir al carrito",
         "buy-now": "Comprar ahora",
-        "add-to-favorite-list" : "Añadir a favoritos"
+        "add-to-favorite-list": "Añadir a favoritos"
     }
 }
