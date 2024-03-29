@@ -63,18 +63,18 @@ function Product({ product }) {
           <div className="counter">
             
             <div className="btn__container text-2xl flex justify-center items-center">
-              <div className="border border-black rounded-xl h-12 flex items-center justify-center mr-2 p-5">
+              <div className="border border-black rounded-xl h-12 flex items-center justify-center mr-2">
               <button
-                className="w-5 rounded-md"
+                className="w-10 rounded-md h-full"
                 onClick={decrease}
               >
                 -
               </button>
-              <span className="counter__output mx-3 font-bold ">
+              <span className="counter__output mx-0 font-bold ">
               {counter}
             </span>
               <button
-                className="w-5 rounded-md "
+                className="w-10 rounded-md h-full"
                 onClick={increase}
               >
                 +
