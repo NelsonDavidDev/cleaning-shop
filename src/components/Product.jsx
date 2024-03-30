@@ -8,30 +8,36 @@ function Product({ product, user }) {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
 
   function addToCart() {
-    if (cart.products.hasOwnProperty(product.id)) {
+   
+    const existingProductIndex = cart.products.findIndex(item => item.id === objToCart.id);
+
+    if (existingProductIndex !== -1) {
+      const updatedProducts = cart.products.map((item, index) => {
+        if (index === existingProductIndex) {
+          return {
+            ...item,
+            units: item.units + objToCart.units,
+            price: parseInt(item.price) + parseInt(objToCart.price)
+          };
+        }
+        return item;
+      });
+
       setCart(prevState => ({
         ...prevState,
-        products: {
-          ...prevState.products,
-          [product.id]: {
-            ...prevState.products[product.id],
-            units: prevState.products[product.id].units + 1
-          }
-        }
+        products: updatedProducts
       }));
     } else {
       setCart(prevState => ({
         ...prevState,
-        products: {
-          ...prevState.products,
-          [product.id]: objToCart
-        }
+        products: [...prevState.products, objToCart]
       }));
     }
-    
-    // Guardar el objeto cart actualizado en el localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
   }
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   //increase counter
   const increase = () => {
@@ -49,6 +55,17 @@ function Product({ product, user }) {
 
   useEffect(() => {
     setObjToCart({
+      id : product.id,
+      title : product.title,
+      price : product.price * units,
+      images : product.images[0],
+      units : units
+    })
+  }, [units]);
+
+  useEffect(() => {
+    setObjToCart({
+      id : product.id,
       title : product.title,
       price : product.price,
       images : product.images[0],

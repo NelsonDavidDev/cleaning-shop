@@ -24,7 +24,7 @@ function App() {
       // El objeto no existe en localStorage, guárdalo
       localStorage.setItem('cart', JSON.stringify({
         userId: "",
-        products: {},
+        products: [],
         price: ""
       }));
       console.log('El objeto ha sido guardado en localStorage.');
