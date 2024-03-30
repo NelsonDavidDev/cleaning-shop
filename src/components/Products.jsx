@@ -24,7 +24,10 @@ useEffect(() => {
   return (
    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 mx-20 mt-5 bg-white rounded-3xl"> {/* Contenedor de los productos */}
       {products.map((product, index) => (
-        <Link href={ '/product/' + product.id } key={index} className="text-black hover:cursor-pointer p-3 flex justify-center items-center" > {/* Estilo para cada producto */}
+        <Link onClick={() => window.scrollTo({
+          top: 0,
+          behavior: 'smooth' // Esto hará que el desplazamiento sea suave
+        })} href={ '/product/' + product.id } key={index} className="text-black hover:cursor-pointer p-3 flex justify-center items-center" > {/* Estilo para cada producto */}
           <div className='hover:text-cyan-500'>
           <img className="w-52" src={cleanImageUrl(product.images[0])} alt={product.title} />
           <h3 className='text-md capitalize '>{product.title}</h3>

@@ -1,28 +1,60 @@
 import { cleanImageUrl } from "../utilities/formaters";
 import { useState, useEffect } from "react";
 
-function Product({ product }) {
+function Product({ product, user }) {
   const [currentImage, setCurrentImage] = useState(product.images);
-  const [counter, setCounter] = useState(1);
-  const [currentProduct, setCurrentProduct] = useState(product);
+  const [units, setunits] = useState(1);
+  const [objToCart, setObjToCart] = useState()
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')))
+
+  function addToCart() {
+    if (cart.products.hasOwnProperty(product.id)) {
+      setCart(prevState => ({
+        ...prevState,
+        products: {
+          ...prevState.products,
+          [product.id]: {
+            ...prevState.products[product.id],
+            units: prevState.products[product.id].units + 1
+          }
+        }
+      }));
+    } else {
+      setCart(prevState => ({
+        ...prevState,
+        products: {
+          ...prevState.products,
+          [product.id]: objToCart
+        }
+      }));
+    }
+    
+    // Guardar el objeto cart actualizado en el localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 
   //increase counter
   const increase = () => {
-    if (counter < 5) {
-      setCounter(counter + 1);
+    if (units < 5) {
+      setunits(units + 1);
     }
   };
 
   //decrease counter
   const decrease = () => {
-    if (counter > 1) {
-      setCounter(counter - 1);
+    if (units > 1) {
+      setunits(units - 1);
     }
   };
 
   useEffect(() => {
+    setObjToCart({
+      title : product.title,
+      price : product.price,
+      images : product.images[0],
+      units : units
+    })
     setCurrentImage(cleanImageUrl(product.images[0]));
-    setCurrentProduct(product);
   }, [product]);
 
   return (
@@ -33,7 +65,7 @@ function Product({ product }) {
         </div>
         
         <div className="flex gap-2 mt-1 rounded-xl">
-          {currentProduct.images.map((image, index) => (
+          {product.images.map((image, index) => (
             <img
               className={
                 image === currentImage
@@ -59,7 +91,7 @@ function Product({ product }) {
 
         <div className="h-full p-10 bg-white flex items-end justify-center">
           <div className="">
-          <h2 className="text-5xl">$ {product.price * counter}</h2><br/>
+          <h2 className="text-5xl">$ {product.price * units}</h2><br/>
           <div className="counter">
             
             <div className="btn__container text-2xl flex justify-center items-center">
@@ -71,7 +103,7 @@ function Product({ product }) {
                 -
               </button>
               <span className="counter__output mx-0 font-bold ">
-              {counter}
+              {units}
             </span>
               <button
                 className="w-10 rounded-md h-full"
@@ -81,7 +113,9 @@ function Product({ product }) {
               </button>
               </div>
               
-              <button className="rounded-md p-2 m-auto bg-sky-500">
+              <button onClick={user ? ("") : (() => addToCart())
+                
+              } className="rounded-md p-2 m-auto bg-sky-500">
               Add to Cart
             </button>
             </div>
