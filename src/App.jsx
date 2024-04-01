@@ -2,7 +2,7 @@ import HomePage from "./screens/HomePage";
 import ProductPage from "./screens/ProductPage";
 import NavBar from "./components/NavBar";
 import { Route } from "wouter";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AdminPanel from "./screens/AdminPanel";
 import LogInModal from "./components/modals/LogInModal";
 import RegisterModal from "./components/modals/RegisterModal";
@@ -13,23 +13,6 @@ function App() {
   const [cartModal, setCartModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const cartExist = localStorage.getItem('cart');
-
-    if (cartExist) {
-      // El objeto ya existe en localStorage, haz lo que sea necesario
-      console.log('El objeto ya existe en localStorage:', cartExist);
-    } else {
-      // El objeto no existe en localStorage, guárdalo
-      localStorage.setItem('cart', JSON.stringify({
-        userId: "",
-        products: [],
-        price: ""
-      }));
-      console.log('El objeto ha sido guardado en localStorage.');
-    }
-  }, [])
   
   return (
     <>

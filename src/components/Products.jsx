@@ -31,7 +31,7 @@ useEffect(() => {
           <div className='hover:text-cyan-500'>
           <img className="w-52" src={cleanImageUrl(product.images[0])} alt={product.title} />
           <h3 className='text-md capitalize '>{product.title}</h3>
-          <p className='text-xl text-black'>$ {product.price}</p>
+          <p className='text-xl text-black'>$ {(product.price * 1).toLocaleString('es-CO')}</p>
           </div>
           
         </Link>
